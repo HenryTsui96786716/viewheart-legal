@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ViewHeart 觀心 privacy policy and end-user license agreement." />
+  <meta name="robots" content="index, follow" />
+  <title>ViewHeart 觀心 - Privacy Policy & Terms of Use</title>
+  <style>
+    :root {
+      --bg: #140c1f;
+      --card: #1f1430;
+      --text: #f3effa;
+      --muted: #b5a8cc;
+      --accent: #d966ff;
+      --border: rgba(255, 255, 255, 0.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 20px;
+    }
+    .container { max-width: 820px; margin: 0 auto; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    h1 { font-size: 1.5rem; font-weight: 700; }
+    .lang-bar { display: flex; gap: 8px; flex-wrap: wrap; }
+    .lang-btn {
+      background: var(--card);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .lang-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+    .tabs { display: flex; gap: 12px; margin-bottom: 24px; }
+    .tab-btn {
+      flex: 1;
+      padding: 12px;
+      background: var(--card);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .tab-btn.active {
+      border-color: var(--accent);
+      color: #fff;
+      background: rgba(217, 102, 255, 0.15);
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    h2 { font-size: 1.25rem; color: #fff; margin: 20px 0 10px; }
+    h2:first-child { margin-top: 0; }
+    p, li { color: var(--muted); font-size: 0.95rem; margin-bottom: 10px; }
+    ul { padding-left: 20px; margin-bottom: 14px; }
+    strong { color: var(--text); }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      padding: 20px 0;
+    }
+    footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>ViewHeart 觀心</h1>
+      <div class="lang-bar">
+        <button class="lang-btn active" data-lang="zh-Hant" onclick="setLang('zh-Hant')">繁體中文</button>
+        <button class="lang-btn" data-lang="zh-Hans" onclick="setLang('zh-Hans')">简体中文</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">English</button>
+        <button class="lang-btn" data-lang="ja" onclick="setLang('ja')">日本語</button>
+        <button class="lang-btn" data-lang="ko" onclick="setLang('ko')">한국어</button>
+      </div>
+    </header>
+
+    <div class="tabs">
+      <button id="tab-privacy" class="tab-btn active" onclick="setTab('privacy')">Privacy Policy / 隱私權政策</button>
+      <button id="tab-terms" class="tab-btn" onclick="setTab('terms')">Terms of Use (EULA) / 服務條款</button>
+    </div>
+
+    <div id="content-area" class="card"></div>
+
+    <footer>
+      &copy; 2026 ViewHeart. All Rights Reserved. |
+      Contact: <a href="mailto:support@viewheart.app">support@viewheart.app</a>
+    </footer>
+  </div>
+
+  <script>
+    let currentLang = 'zh-Hant';
+    let currentTab = 'privacy';
+
+    const data = {
+      'zh-Hant': {
+        tabPrivacy: '隱私權政策',
+        tabTerms: '服務條款 (EULA)',
+        privacy: `
+          <h2>隱私權政策（Privacy Policy）</h2>
+          <p><strong>生效日期：2026年11月</strong></p>
+          <p>ViewHeart 觀心（以下簡稱「本應用程式」）高度重視您的個人隱私與數據安全。本政策旨在說明我們如何收集、處理及保護您的資料，並完全符合 Apple App Store 隱私規範。</p>
+          <h2>1. 相機、TrueDepth 與面部幾何數據處理</h2>
+          <ul>
+            <li><strong>個人 3D 骨相掃描（本地計算，絕不上傳原圖）：</strong>當您使用個人 3D 面相功能時，本應用程式僅在您的 iPhone 裝置本地端透過 Apple TrueDepth 相機提取脫敏後的面部幾何比例與特徵參數（JSON 數值）。<strong>您的個人 3D 掃描原始人臉照片完全留在本地裝置，絕不上傳至任何雲端伺服器或第三方。</strong></li>
+            <li><strong>雙人合盤人像與風水實景照片：</strong>當您主動選擇使用「雙人合盤」上傳照片或「風水實景測算」拍攝居家環境與平面圖時，相關影像僅會透過 HTTPS 加密通道傳送至雲端 AI 引擎進行當次格局分析。分析完成後系統立即清除暫存影像，絕不留存或用於模型訓練。</li>
+          </ul>
+          <h2>2. 出生資料與命理排盤數據</h2>
+          <p>您輸入的出生日期、時間與出生地僅用於計算傳統星盤（八字、紫微斗數、奇門遁甲）及生成個人化報告。我們絕不將您的任何資料出售、出租或交換給任何第三方廣告商。</p>
+          <h2>3. 雲端 AI 運算與數據安全</h2>
+          <p>為提供深度解析報告，脫敏後的排盤與幾何參數會加密傳送至雲端 AI 運算節點。所有數據傳輸均受 TLS/SSL 加密保護，且僅在獲得您的明確授權（Just-in-Time Consent）後方會執行。</p>
+          <h2>4. 您的權利與聯絡方式</h2>
+          <p>您隨時可在 App 內的「個人檔案」中一鍵重置並刪除本地所有歷史報告與個人資料。如有任何隱私疑問，請聯絡：support@viewheart.app。</p>
+        `,
+        terms: `
+          <h2>使用者授權協議與服務條款（EULA）</h2>
+          <p><strong>生效日期：2026年11月</strong></p>
+          <h2>1. 服務性質與文化娛樂免責聲明（重要）</h2>
+          <p><strong>ViewHeart 觀心所提供之所有命理分析、面相特徵解讀、塔羅占卜、風水建議及合盤報告，均基於傳統東方玄學體系與現代心理學模型演算生成，僅供文化娛樂、自我探索與生活參考之用。</strong>本服務不構成任何醫療診斷、心理治療、法律意見或投資理財建議。用戶應保持理性思考，對自身的人生決策負完全責任。</p>
+          <h2>2. 自動續訂與內購條款（Apple In-App Purchase）</h2>
+          <ul>
+            <li><strong>訂閱方案與扣款：</strong>本應用程式提供週度、月度或年度自動續訂會員（ViewHeart Pro）以及單次消耗型次數加油包。確認購買後，費用將直接從您的 Apple ID 帳戶扣除。</li>
+            <li><strong>自動續訂與取消：</strong>除非您在當前訂閱週期結束前至少 24 小時關閉自動續訂，否則系統將在到期前 24 小時內自動扣款續期。您隨時可前往 iPhone「設定」>「Apple ID」>「訂閱項目」中管理或取消訂閱。</li>
+            <li><strong>免費試用說明：</strong>若提供免費試用期，未使用的試用天數將在您購買正式訂閱時自動失效。</li>
+          </ul>
+          <h2>3. 知識產權與使用規範</h2>
+          <p>本應用程式內之介面設計、演算法邏輯及 AI 生成報告僅供個人非商業用途使用，嚴禁透過自動化腳本惡意抓取或轉售。</p>
+        `
+      },
+      'zh-Hans': {
+        tabPrivacy: '隐私权政策',
+        tabTerms: '服务条款 (EULA)',
+        privacy: `
+          <h2>隐私权政策（Privacy Policy）</h2>
+          <p><strong>生效日期：2026年11月</strong></p>
+          <p>ViewHeart 观心（以下简称“本应用”）高度重视您的个人隐私与数据安全。本政策旨在说明我们如何收集、处理及保护您的资料，并完全符合 Apple App Store 隐私规范。</p>
+          <h2>1. 相机、TrueDepth 与面部几何数据处理</h2>
+          <ul>
+            <li><strong>个人 3D 骨相扫描（本地计算，绝不上传原图）：</strong>当您使用个人 3D 面相功能时，本应用仅在您的 iPhone 设备本地端通过 Apple TrueDepth 相机提取脱敏后的面部几何比例与特征参数（JSON 数值）。<strong>您的个人 3D 扫描原始人脸照片完全留在本地设备，绝不上传至任何云服务器或第三方。</strong></li>
+            <li><strong>双人合盘人像与风水实景照片：</strong>当您主动选择使用“双人合盘”上传照片或“风水实景测算”拍摄居家环境与平面图时，相关影像仅会通过 HTTPS 加密通道传送至云端 AI 引擎进行当次格局分析。分析完成后系统立即清除暂存影像，绝不留存或用于模型训练。</li>
+          </ul>
+          <h2>2. 出生资料与命理排盘数据</h2>
+          <p>您输入的出生日期、时间与出生地仅用于计算传统星盘（八字、紫微斗数、奇门遁甲）及生成个性化报告。我们绝不将您的任何资料出售、出租或交换给任何第三方广告商。</p>
+          <h2>3. 云端 AI 运算与数据安全</h2>
+          <p>为提供深度解析报告，脱敏后的排盘与几何参数会加密传送至云端 AI 运算节点。所有数据传输均受 TLS/SSL 加密保护，且仅在获得您的明确授权后方会执行。</p>
+          <h2>4. 您的权利与联系方式</h2>
+          <p>您随时可在 App 内的“个人档案”中一键重置并删除本地所有历史报告与个人资料。如有任何隐私疑问，请联系：support@viewheart.app。</p>
+        `,
+        terms: `
+          <h2>用户许可协议与服务条款（EULA）</h2>
+          <p><strong>生效日期：2026年11月</strong></p>
+          <h2>1. 服务性质与文化娱乐免责声明（重要）</h2>
+          <p><strong>ViewHeart 观心所提供之所有命理分析、面相特征解读、塔罗占卜、风水建议及合盘报告，均基于传统东方玄学体系与现代心理学模型演算生成，仅供文化娱乐、自我探索与生活参考之用。</strong>本服务不构成任何医疗诊断、心理治疗、法律意见或投资理财建议。用户应保持理性思考，对自身的人生决策负完全责任。</p>
+          <h2>2. 自动续订与内购条款（Apple In-App Purchase）</h2>
+          <ul>
+            <li><strong>订阅方案与扣款：</strong>本应用提供周度、月度或年度自动续订会员（ViewHeart Pro）以及单次消耗型次数加油包。确认购买后，费用将直接从您的 Apple ID 账户扣除。</li>
+            <li><strong>自动续订与取消：</strong>除非您在当前订阅周期结束前至少 24 小时关闭自动续订，否则系统将在到期前 24 小时内自动扣款续期。您随时可前往 iPhone“设置”>“Apple ID”>“订阅”中管理或取消订阅。</li>
+          </ul>
+          <h2>3. 知识产权与使用规范</h2>
+          <p>本应用内之界面设计、算法逻辑及 AI 生成报告仅供个人非商业用途使用，严禁通过自动化脚本恶意抓取或转售。</p>
+        `
+      },
+      'en': {
+        tabPrivacy: 'Privacy Policy',
+        tabTerms: 'Terms of Use (EULA)',
+        privacy: `
+          <h2>Privacy Policy</h2>
+          <p><strong>Effective Date: November 2026</strong></p>
+          <p>ViewHeart ("the App") respects your privacy and is committed to protecting your personal data in strict compliance with Apple App Store Review Guidelines.</p>
+          <h2>1. Camera, TrueDepth & Facial Geometry Data</h2>
+          <ul>
+            <li><strong>Personal 3D Facial Scan (On-Device Processing Only):</strong> When using the Personal 3D Scan feature, the App utilizes Apple's TrueDepth camera strictly on your local device to compute anonymized geometric ratios (JSON values). <strong>Your raw 3D scan facial images remain exclusively on your device and are never uploaded or stored on any server.</strong></li>
+            <li><strong>Compatibility Portraits & Feng Shui Photos:</strong> When you voluntarily upload portraits for Compatibility readings or capture room/exterior photos for Feng Shui analysis, images are transmitted securely via HTTPS to our cloud AI engine solely for immediate analysis and are deleted immediately after processing. They are never sold or used to train AI models.</li>
+          </ul>
+          <h2>2. Birth Data & Chart Calculations</h2>
+          <p>Your birth date, time, and location are used exclusively to calculate traditional astrological charts and generate your personalized insights. We never sell or share your personal data with third-party advertisers.</p>
+          <h2>3. Data Security & User Control</h2>
+          <p>All cloud AI transmissions are encrypted via TLS/SSL and initiated only after your explicit Just-in-Time consent. You may permanently delete all local data and reports anytime via "Profile > Reset App / Logout". Contact: support@viewheart.app.</p>
+        `,
+        terms: `
+          <h2>Terms of Use (EULA)</h2>
+          <p><strong>Effective Date: November 2026</strong></p>
+          <h2>1. Cultural Entertainment & Disclaimer</h2>
+          <p><strong>All metaphysical readings, facial geometry insights, Tarot interpretations, Feng Shui suggestions, and compatibility reports provided by ViewHeart are generated based on traditional systems and modern psychological models for cultural entertainment, personal reflection, and self-discovery purposes only.</strong> They do not constitute medical, psychological, legal, or financial advice.</p>
+          <h2>2. Auto-Renewable Subscriptions & In-App Purchases</h2>
+          <ul>
+            <li><strong>Payment:</strong> Payment will be charged to your Apple ID account at confirmation of purchase.</li>
+            <li><strong>Auto-Renewal:</strong> Subscriptions automatically renew unless auto-renew is turned off at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period.</li>
+            <li><strong>Cancellation:</strong> You can manage and cancel your subscriptions by going to your iPhone Settings > Apple ID > Subscriptions after purchase.</li>
+          </ul>
+          <h2>3. Acceptable Use</h2>
+          <p>All content and reports generated within the App are for personal, non-commercial use only.</p>
+        `
+      },
+      'ja': {
+        tabPrivacy: 'プライバシーポリシー',
+        tabTerms: '利用規約 (EULA)',
+        privacy: `
+          <h2>プライバシーポリシー</h2>
+          <p><strong>発効日：2026年11月</strong></p>
+          <p>ViewHeart（以下「本アプリ」）は、お客様のプライバシーを尊重し、Apple App Storeのガイドラインに厳格に従って個人データを保護します。</p>
+          <h2>1. カメラ、TrueDepthおよび顔面幾何学データ</h2>
+          <ul>
+            <li><strong>パーソナル3Dスキャン（端末内処理のみ）：</strong>Apple TrueDepthカメラを使用して端末内でのみ匿名化された幾何学的比率（JSON数値）を計算します。<strong>元の顔写真がクラウドサーバーにアップロードまたは保存されることは一切ありません。</strong></li>
+            <li><strong>相性診断および風水写真：</strong>分析のためにアップロードされた環境写真やポートレートは、HTTPS暗号化通信を通じてクラウドAIに送信され、分析完了後に直ちに破棄されます。</li>
+          </ul>
+          <h2>2. データの管理と削除</h2>
+          <p>アプリ内の「プロフィール」からいつでもすべてのローカルデータを完全に削除できます。お問い合わせ：support@viewheart.app</p>
+        `,
+        terms: `
+          <h2>利用規約（EULA）</h2>
+          <p><strong>発効日：2026年11月</strong></p>
+          <h2>1. 文化・エンターテインメント目的の免責事項</h2>
+          <p><strong>本アプリが提供するすべての分析、相性診断、風水アドバイスは、伝統的な東洋の知恵と現代心理学モデルに基づく文化・エンターテインメントおよび自己理解の参考としてのみ提供されます。</strong>医療、法律、投資等の専門的助言を構成するものではありません。</p>
+          <h2>2. 自動更新サブスクリプション</h2>
+          <p>購入確認時にApple IDアカウントに課金されます。現在の期間が終了する24時間前までに自動更新をオフにしない限り、サブスクリプションは自動的に更新されます。管理・解約はiPhoneの「設定」＞「Apple ID」＞「サブスクリプション」から行えます。</p>
+        `
+      },
+      'ko': {
+        tabPrivacy: '개인정보 처리방침',
+        tabTerms: '이용약관 (EULA)',
+        privacy: `
+          <h2>개인정보 처리방침</h2>
+          <p><strong>시행일: 2026년 11월</strong></p>
+          <p>ViewHeart(이하 "본 앱")는 귀하의 개인정보를 소중히 여기며 Apple App Store 심사 지침을 엄격히 준수합니다.</p>
+          <h2>1. 카메라, TrueDepth 및 안면 기하학 데이터</h2>
+          <ul>
+            <li><strong>개인 3D 스캔(기기 내 로컬 처리):</strong> Apple TrueDepth 카메라를 통해 기기 내부에서만 비식별 기하학적 비율(JSON)을 계산합니다. <strong>원본 얼굴 사진은 절대 외부 서버로 전송되거나 저장되지 않습니다.</strong></li>
+            <li><strong>궁합 및 풍수 사진:</strong> 분석을 위해 업로드된 사진은 HTTPS 암호화 통신을 통해 클라우드 AI로 전송되며, 분석 완료 즉시 파기됩니다.</li>
+          </ul>
+          <h2>2. 데이터 관리</h2>
+          <p>앱 내 '프로필' 메뉴에서 언제든지 모든 로컬 데이터를 삭제할 수 있습니다. 문의: support@viewheart.app</p>
+        `,
+        terms: `
+          <h2>이용약관 (EULA)</h2>
+          <p><strong>시행일: 2026년 11월</strong></p>
+          <h2>1. 문화 및 엔터테인먼트 면책 조항</h2>
+          <p><strong>본 앱에서 제공하는 모든 분석, 타로, 풍수 및 궁합 리포트는 전통 명리학과 현대 심리학 모델을 기반으로 한 문화 엔터테인먼트 및 자기 성찰 참고용으로만 제공됩니다.</strong> 의료, 법률 또는 재정적 조언을 대체하지 않습니다.</p>
+          <h2>2. 자동 갱신 구독</h2>
+          <p>구매 확인 시 Apple ID 계정으로 요금이 청구됩니다. 현재 구독 기간이 종료되기 최소 24시간 전에 자동 갱신을 해제하지 않으면 구독이 자동으로 갱신됩니다.</p>
+        `
+      }
+    };
+
+    function render() {
+      document.documentElement.lang = currentLang;
+      document.getElementById('tab-privacy').textContent = data[currentLang].tabPrivacy;
+      document.getElementById('tab-terms').textContent = data[currentLang].tabTerms;
+      document.getElementById('content-area').innerHTML = data[currentLang][currentTab];
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === currentLang);
+      });
+      document.getElementById('tab-privacy').classList.toggle('active', currentTab === 'privacy');
+      document.getElementById('tab-terms').classList.toggle('active', currentTab === 'terms');
+    }
+
+    function updateURL() {
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', currentLang);
+      url.searchParams.set('tab', currentTab);
+      window.history.replaceState({}, '', url);
+    }
+
+    function setLang(lang) {
+      if (!data[lang]) return;
+      currentLang = lang;
+      updateURL();
+      render();
+    }
+
+    function setTab(tab) {
+      currentTab = tab === 'terms' ? 'terms' : 'privacy';
+      updateURL();
+      render();
+    }
+
+    // 支援網址參數直接開啟指定分頁與語言，例如 ?lang=en&tab=terms
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('tab') === 'terms') currentTab = 'terms';
+    if (params.get('tab') === 'privacy') currentTab = 'privacy';
+    if (params.get('lang') && data[params.get('lang')]) {
+      currentLang = params.get('lang');
+    }
+    render();
+  </script>
+</body>
+</html>
