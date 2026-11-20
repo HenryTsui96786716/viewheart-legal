@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ViewHeart 觀心 — 技術支援與常見問題 | Support</title>
+  <title>ViewHeart 觀心 — Technical Support</title>
   <style>
     :root {
       --bg: #130c1c;
@@ -11,72 +11,167 @@
       --text: #f3eff8;
       --muted: #b6aac8;
       --accent: #c084fc;
+      --accent-glow: rgba(192, 132, 252, 0.25);
       --border: rgba(255, 255, 255, 0.1);
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif;
-      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "PingFang SC", "Hiragino Sans", "Apple SD Gothic Neo", sans-serif;
+      background: radial-gradient(circle at top center, #26163b 0%, var(--bg) 55%);
       color: var(--text);
-      line-height: 1.65;
-      padding: 24px 16px 60px;
+      line-height: 1.7;
+      padding: 28px 16px 64px;
+      min-height: 100vh;
     }
-    .container { max-width: 760px; margin: 0 auto; }
-    header { text-align: center; padding: 24px 0 32px; }
-    h1 { font-size: 1.75rem; margin: 0 0 8px; }
-    .subtitle { color: var(--muted); font-size: 0.95rem; margin: 0; }
+    .container { max-width: 780px; margin: 0 auto; }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .lang-switch {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .lang-btn {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 13px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .lang-btn:hover {
+      color: var(--text);
+      border-color: var(--accent);
+    }
+    .lang-btn.active {
+      background: linear-gradient(135deg, #a855f7, #ec4899);
+      color: #fff;
+      border-color: transparent;
+      font-weight: 600;
+      box-shadow: 0 2px 10px var(--accent-glow);
+    }
+    header {
+      text-align: center;
+      padding: 12px 0 28px;
+    }
+    h1 {
+      font-size: 1.75rem;
+      margin: 0 0 8px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
     .card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 22px 24px;
+      padding: 24px;
       margin-bottom: 18px;
     }
-    h2 { font-size: 1.15rem; margin: 0 0 12px; color: var(--accent); }
-    p, li { color: var(--text); font-size: 0.95rem; }
-    .muted { color: var(--muted); font-size: 0.88rem; }
-    a { color: var(--accent); text-decoration: none; }
+    h2 {
+      font-size: 1.15rem;
+      margin: 0 0 12px;
+      color: var(--accent);
+    }
+    p {
+      color: var(--text);
+      font-size: 0.95rem;
+      margin: 0 0 12px;
+    }
+    p:last-child { margin-bottom: 0; }
+    .muted {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
     a:hover { text-decoration: underline; }
-    .faq-item { margin-bottom: 14px; }
-    .faq-item strong { display: block; margin-bottom: 4px; }
-    footer { text-align: center; margin-top: 32px; color: var(--muted); font-size: 0.85rem; }
+    .faq-item {
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .faq-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .faq-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.98rem;
+    }
+    footer {
+      text-align: center;
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
   </style>
 </head>
 <body>
   <div class="container">
+    <div class="top-bar">
+      <div class="brand">ViewHeart 觀心</div>
+      <div class="lang-switch">
+        <button class="lang-btn active" onclick="setLang('zh-Hant', this)">繁體中文</button>
+        <button class="lang-btn" onclick="setLang('zh-Hans', this)">简体中文</button>
+        <button class="lang-btn" onclick="setLang('en', this)">English</button>
+        <button class="lang-btn" onclick="setLang('ja', this)">日本語</button>
+        <button class="lang-btn" onclick="setLang('ko', this)">한국어</button>
+      </div>
+    </div>
+
     <header>
-      <h1>ViewHeart 觀心 — Technical Support</h1>
-      <p class="subtitle">技術支援、使用說明與客戶服務中心</p>
+      <h1 id="page-title">技術支援與常見問題</h1>
+      <p class="subtitle" id="page-subtitle">ViewHeart 觀心 — 使用說明與客戶服務中心</p>
     </header>
 
     <div class="card">
-      <h2>聯繫我們 / Contact Us</h2>
-      <p>若您在使用 <strong>ViewHeart 觀心</strong> 時遇到任何操作問題、訂閱或內購恢復異常、帳號疑問或功能建議，歡迎透過以下電子郵件聯繫我們，我們將於 1–2 個工作日內回覆：</p>
-      <p><strong>技術支援信箱 Support Email：</strong><a href="mailto:470803639@qq.com">470803639@qq.com</a></p>
+      <h2 id="contact-title">聯繫我們</h2>
+      <p id="contact-desc">若您在使用 <strong>ViewHeart 觀心</strong> 時遇到任何操作問題、訂閱或內購恢復異常、帳號疑問或功能建議，歡迎透過以下電子郵件聯繫我們，我們將於 1–2 個工作日內回覆：</p>
+      <p><strong id="email-label">技術支援信箱：</strong><a href="mailto:470803639@qq.com">470803639@qq.com</a></p>
     </div>
 
     <div class="card">
-      <h2>常見問題 / FAQ</h2>
+      <h2 id="faq-title">常見問題</h2>
       <div class="faq-item">
-        <strong>Q1：更換新手機或重新安裝後，如何恢復已購買的進階內容？</strong>
-        <span class="muted">請使用原本的 Apple ID 登入 App Store，進入 App 內的「個人檔案」或解鎖頁面點擊「恢復購買（Restore Purchases）」，系統將自動同步您的購買權益。</span>
+        <strong id="q1-title">Q1：更換新手機或重新安裝後，如何恢復已購買的進階內容？</strong>
+        <span class="muted" id="q1-ans">請使用原本的 Apple ID 登入 App Store，進入 App 內的「個人檔案」或解鎖頁面點擊「恢復購買（Restore Purchases）」，系統將自動同步您的購買權益。</span>
       </div>
       <div class="faq-item">
-        <strong>Q2：使用「實景測風水」或「3D 面相掃描」時無法開啟相機或指南針？</strong>
-        <span class="muted">請前往 iPhone「設定 ＞ 隱私權與安全性」中，確認已允許 ViewHeart 存取相機與定位／動作感測器權限。</span>
+        <strong id="q2-title">Q2：使用「實景測風水」或「3D 面相掃描」時無法開啟相機或指南針？</strong>
+        <span class="muted" id="q2-ans">請前往 iPhone「設定 ＞ 隱私權與安全性」中，確認已允許 ViewHeart 存取相機與定位／動作感測器權限。</span>
       </div>
       <div class="faq-item">
-        <strong>Q3：命理、塔羅與風水分析結果該如何參考？</strong>
-        <span class="muted">所有分析結果均基於傳統文化系統與自我覺察模型生成，僅供文化娛樂、個人反思與生活參考，不構成醫療、法律、投資或專業決策建議。</span>
+        <strong id="q3-title">Q3：命理、塔羅與風水分析結果該如何參考？</strong>
+        <span class="muted" id="q3-ans">所有分析結果均基於傳統文化系統與自我覺察模型生成，僅供文化娛樂、個人反思與生活參考，不構成醫療、法律、投資或專業決策建議。</span>
       </div>
     </div>
 
     <div class="card">
-      <h2>相關條款與隱私 / Legal & Privacy</h2>
+      <h2 id="legal-title">相關條款與隱私</h2>
       <p>
-        • <a href="https://henrytsui96786716.github.io/viewheart-legal/legal.html">隱私權政策 (Privacy Policy)</a><br />
-        • <a href="https://henrytsui96786716.github.io/viewheart-legal/legal.html?tab=terms">服務條款 (Terms of Use / EULA)</a>
+        • <a href="https://henrytsui96786716.github.io/viewheart-legal/legal.html" id="privacy-link">隱私權政策 (Privacy Policy)</a><br />
+        • <a href="https://henrytsui96786716.github.io/viewheart-legal/legal.html?tab=terms" id="terms-link">服務條款 (Terms of Use / EULA)</a>
       </p>
     </div>
 
@@ -84,5 +179,129 @@
       © 2026 Shaoyu Song. All rights reserved.
     </footer>
   </div>
+
+  <script>
+    const i18n = {
+      'zh-Hant': {
+        title: '技術支援與常見問題',
+        subtitle: 'ViewHeart 觀心 — 使用說明與客戶服務中心',
+        contactTitle: '聯繫我們',
+        contactDesc: '若您在使用 <strong>ViewHeart 觀心</strong> 時遇到任何操作問題、訂閱或內購恢復異常、帳號疑問或功能建議，歡迎透過以下電子郵件聯繫我們，我們將於 1–2 個工作日內回覆：',
+        emailLabel: '技術支援信箱：',
+        faqTitle: '常見問題',
+        q1Title: 'Q1：更換新手機或重新安裝後，如何恢復已購買的進階內容？',
+        q1Ans: '請使用原本的 Apple ID 登入 App Store，進入 App 內的「個人檔案」或解鎖頁面點擊「恢復購買（Restore Purchases）」，系統將自動同步您的購買權益。',
+        q2Title: 'Q2：使用「實景測風水」或「3D 面相掃描」時無法開啟相機或指南針？',
+        q2Ans: '請前往 iPhone「設定 ＞ 隱私權與安全性」中，確認已允許 ViewHeart 存取相機與定位／動作感測器權限。',
+        q3Title: 'Q3：命理、塔羅與風水分析結果該如何參考？',
+        q3Ans: '所有分析結果均基於傳統文化系統與自我覺察模型生成，僅供文化娛樂、個人反思與生活參考，不構成醫療、法律、投資或專業決策建議。',
+        legalTitle: '相關條款與隱私',
+        privacyLink: '隱私權政策 (Privacy Policy)',
+        termsLink: '服務條款 (Terms of Use / EULA)'
+      },
+      'zh-Hans': {
+        title: '技术支持与常见问题',
+        subtitle: 'ViewHeart 观心 — 使用说明与客户服务中心',
+        contactTitle: '联系我们',
+        contactDesc: '若您在使用 <strong>ViewHeart 观心</strong> 时遇到任何操作问题、订阅或内购恢复异常、账号疑问或功能建议，欢迎通过以下电子邮件联系我们，我们将于 1–2 个工作日内回复：',
+        emailLabel: '技术支持邮箱：',
+        faqTitle: '常见问题',
+        q1Title: 'Q1：更换新手机或重新安装后，如何恢复已购买的进阶内容？',
+        q1Ans: '请使用原本的 Apple ID 登录 App Store，进入 App 内的“个人档案”或解锁页面点击“恢复购买（Restore Purchases）”，系统将自动同步您的购买权益。',
+        q2Title: 'Q2：使用“实景测风水”或“3D 面相扫描”时无法开启相机或指南针？',
+        q2Ans: '请前往 iPhone“设置 ＞ 隐私与安全性”中，确认已允许 ViewHeart 访问相机与定位／运动传感器权限。',
+        q3Title: 'Q3：命理、塔罗与风水分析结果该如何参考？',
+        q3Ans: '所有分析结果均基于传统文化系统与自我觉察模型生成，仅供文化娱乐、个人反思与生活参考，不构成医疗、法律、投资或专业决策建议。',
+        legalTitle: '相关条款与隐私',
+        privacyLink: '隐私政策 (Privacy Policy)',
+        termsLink: '服务条款 (Terms of Use / EULA)'
+      },
+      'en': {
+        title: 'Technical Support & FAQ',
+        subtitle: 'ViewHeart — User Guide & Customer Support Center',
+        contactTitle: 'Contact Us',
+        contactDesc: 'If you encounter any issues while using <strong>ViewHeart</strong>, need help restoring purchases, or have feedback and inquiries, please contact us via email. We typically respond within 1–2 business days:',
+        emailLabel: 'Support Email: ',
+        faqTitle: 'Frequently Asked Questions',
+        q1Title: 'Q1: How do I restore my purchases on a new device or after reinstalling?',
+        q1Ans: 'Sign in with the same Apple ID used for the original purchase, open your Profile or the unlock screen inside ViewHeart, and tap "Restore Purchases" to sync your access.',
+        q2Title: 'Q2: Why cannot I access the camera or compass for Feng Shui or 3D Face Scan?',
+        q2Ans: 'Please open iPhone "Settings > Privacy & Security" and ensure ViewHeart is granted permission to access Camera, Location, and Motion & Fitness sensors.',
+        q3Title: 'Q3: How should I interpret the metaphysical, Tarot, and Feng Shui readings?',
+        q3Ans: 'All insights are generated based on traditional cultural systems and self-reflection models. They are intended solely for cultural entertainment and personal reflection, and do not constitute medical, legal, financial, or professional advice.',
+        legalTitle: 'Legal & Privacy',
+        privacyLink: 'Privacy Policy',
+        termsLink: 'Terms of Use (EULA)'
+      },
+      'ja': {
+        title: 'テクニカルサポート・よくある質問',
+        subtitle: 'ViewHeart（観心）— ご利用ガイド＆カスタマーサポート',
+        contactTitle: 'お問い合わせ',
+        contactDesc: '<strong>ViewHeart</strong> の操作方法、購入の復元、不具合やご要望などがございましたら、下記メールアドレスまでお気軽にお問い合わせください。通常1〜2営業日以内にご返信いたします：',
+        emailLabel: 'サポートメール：',
+        faqTitle: 'よくある質問（FAQ）',
+        q1Title: 'Q1：機種変更や再インストール後、購入済みのコンテンツを復元するには？',
+        q1Ans: '購入時と同じ Apple ID で App Store にサインインした状態で、アプリ内の「プロフィール」またはロック解除画面にある「購入を復元（Restore Purchases）」をタップしてください。',
+        q2Title: 'Q2：「実景風水」や「3D人相スキャン」でカメラやコンパスが起動しません。',
+        q2Ans: 'iPhoneの「設定 ＞ プライバシーとセキュリティ」を開き、ViewHeart にカメラ、位置情報、モーションセンサーのアクセス権限が許可されているかご確認ください。',
+        q3Title: 'Q3：命理・タロット・風水の鑑定結果はどのように参考にすべきですか？',
+        q3Ans: 'すべての分析結果は伝統文化システムと自己省察モデルに基づいて生成されており、文化的なエンターテインメントおよび個人の内省を目的としています。医療、法律、投資等の専門的助言を構成するものではありません。',
+        legalTitle: '利用規約とプライバシー',
+        privacyLink: 'プライバシーポリシー (Privacy Policy)',
+        termsLink: '利用規約 (Terms of Use / EULA)'
+      },
+      'ko': {
+        title: '기술 지원 및 자주 묻는 질문',
+        subtitle: 'ViewHeart(관심) — 이용 안내 및 고객 지원 센터',
+        contactTitle: '문의하기',
+        contactDesc: '<strong>ViewHeart</strong> 이용 중 오류 발생, 구매 내역 복원 문제, 계정 문의 또는 기능 제안이 있으시면 아래 이메일로 연락해 주세요. 영업일 기준 1~2일 이내에 답변해 드립니다:',
+        emailLabel: '고객 지원 이메일: ',
+        faqTitle: '자주 묻는 질문 (FAQ)',
+        q1Title: 'Q1: 기기를 변경하거나 앱을 재설치한 후 구매한 콘텐츠를 어떻게 복원하나요?',
+        q1Ans: '기존에 구매한 동일한 Apple ID로 App Store에 로그인한 후, 앱 내 프로필 또는 잠금 해제 화면에서 "구매 복원(Restore Purchases)"을 누르면 권한이 자동으로 동기화됩니다.',
+        q2Title: 'Q2: "실경 풍수" 또는 "3D 관상 스캔" 사용 시 카메라나 나침반이 작동하지 않습니다.',
+        q2Ans: 'iPhone의 "설정 > 개인정보 보호 및 보안"에서 ViewHeart의 카메라, 위치 및 동작 센서 접근 권한이 허용되어 있는지 확인해 주세요.',
+        q3Title: 'Q3: 명리, 타로 및 풍수 분석 결과는 어떻게 참고해야 하나요?',
+        q3Ans: '모든 분석 결과는 전통 문화 체계와 자기 성찰 모델을 기반으로 생성되며, 문화적 엔터테인먼트 및 개인적 성찰 목적으로만 제공됩니다. 의료, 법률, 투자 등 전문적인 조언을 대체하지 않습니다.',
+        legalTitle: '약관 및 개인정보 처리방침',
+        privacyLink: '개인정보 처리방침 (Privacy Policy)',
+        termsLink: '이용약관 (Terms of Use / EULA)'
+      }
+    };
+
+    function setLang(lang, btn) {
+      const data = i18n[lang] || i18n['zh-Hant'];
+      document.documentElement.lang = lang;
+      document.getElementById('page-title').textContent = data.title;
+      document.getElementById('page-subtitle').textContent = data.subtitle;
+      document.getElementById('contact-title').textContent = data.contactTitle;
+      document.getElementById('contact-desc').innerHTML = data.contactDesc;
+      document.getElementById('email-label').textContent = data.emailLabel;
+      document.getElementById('faq-title').textContent = data.faqTitle;
+      document.getElementById('q1-title').textContent = data.q1Title;
+      document.getElementById('q1-ans').textContent = data.q1Ans;
+      document.getElementById('q2-title').textContent = data.q2Title;
+      document.getElementById('q2-ans').textContent = data.q2Ans;
+      document.getElementById('q3-title').textContent = data.q3Title;
+      document.getElementById('q3-ans').textContent = data.q3Ans;
+      document.getElementById('legal-title').textContent = data.legalTitle;
+      document.getElementById('privacy-link').textContent = data.privacyLink;
+      document.getElementById('terms-link').textContent = data.termsLink;
+
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+    }
+
+    const userLang = (navigator.language || '').toLowerCase();
+    if (userLang.startsWith('zh-cn') || userLang.startsWith('zh-hans')) {
+      setLang('zh-Hans', document.querySelectorAll('.lang-btn')[1]);
+    } else if (userLang.startsWith('en')) {
+      setLang('en', document.querySelectorAll('.lang-btn')[2]);
+    } else if (userLang.startsWith('ja')) {
+      setLang('ja', document.querySelectorAll('.lang-btn')[3]);
+    } else if (userLang.startsWith('ko')) {
+      setLang('ko', document.querySelectorAll('.lang-btn')[4]);
+    }
+  </script>
 </body>
 </html>
